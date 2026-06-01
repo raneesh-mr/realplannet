@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Plannet — Real Solutions for Real People</title>
+<meta name="description" content="One platform. Career tools, wealth planning, and more — built for Indians, NRIs, and global professionals.">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #050508;
+    --deep: #0a0a0f;
+    --navy: #080d1a;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: rgba(201,168,76,0.15);
+    --white: #f5f4f0;
+    --white-dim: rgba(245,244,240,0.6);
+    --white-faint: rgba(245,244,240,0.08);
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(201,168,76,0.5);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.25s ease;
+  }
+
+  /* Noise overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 48px;
+    background: linear-gradient(to bottom, rgba(5,5,8,0.95), transparent);
+    backdrop-filter: blur(0px);
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    padding: 16px 48px;
+    background: rgba(5,5,8,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .logo-mark {
+    width: 36px; height: 36px;
+    position: relative;
+  }
+  .logo-mark svg { width: 100%; height: 100%; }
+  .logo-text {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    white-space: nowrap;
+  }
+  .logo-text span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--white-dim);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-lang {
+    display: flex;
+    gap: 8px;
+  }
+  .lang-btn {
+    background: none;
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--white-dim);
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    border-radius: 2px;
+    cursor: none;
+    transition: all 0.3s;
+  }
+  .lang-btn:hover, .lang-btn.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-dim);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 48px 80px;
+  }
+
+  /* Radial glow background */
+  .hero-glow {
+    position: absolute;
+    width: 800px; height: 800px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-glow-2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(ellipse, rgba(30,60,120,0.15) 0%, transparent 70%);
+    top: 30%; left: 20%;
+    pointer-events: none;
+  }
+
+  /* Grid lines */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 0%, transparent 100%);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    opacity: 0;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 8vw, 112px);
+    font-weight: 300;
+    line-height: 1.0;
+    text-align: center;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    opacity: 0;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-title .line-2 {
+    display: block;
+    font-weight: 600;
+  }
+
+  .hero-tagline {
+    margin-top: 28px;
+    font-size: 16px;
+    color: var(--white-dim);
+    text-align: center;
+    max-width: 480px;
+    line-height: 1.7;
+    font-weight: 300;
+    opacity: 0;
+  }
+
+  .hero-tagline-hi {
+    display: none;
+    font-size: 14px;
+    color: var(--white-dim);
+    margin-top: 8px;
+    text-align: center;
+  }
+  .hero-tagline-ml {
+    display: none;
+    font-size: 14px;
+    color: var(--white-dim);
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .hero-cta {
+    margin-top: 52px;
+    display: flex;
+    gap: 16px;
+    opacity: 0;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 16px 36px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.2);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+  .btn-primary:hover::after { transform: translateX(0); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.25); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--white-dim);
+    border: 1px solid rgba(245,244,240,0.15);
+    padding: 16px 36px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: none;
+    transition: all 0.3s ease;
+  }
+  .btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+  .scroll-text {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  /* PRODUCTS SECTION */
+  .section {
+    padding: 120px 48px;
+    position: relative;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.1;
+    max-width: 600px;
+    margin-bottom: 64px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* Product cards */
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .product-card {
+    background: var(--deep);
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(201,168,76,0.04);
+    text-decoration: none;
+    display: block;
+    group: true;
+  }
+  .product-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .product-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.15); }
+  .product-card:hover::before { opacity: 1; }
+
+  .card-number {
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.08);
+    position: absolute;
+    top: 24px; right: 32px;
+    line-height: 1;
+    transition: color 0.4s;
+  }
+  .product-card:hover .card-number { color: rgba(201,168,76,0.15); }
+
+  .card-icon {
+    width: 48px; height: 48px;
+    margin-bottom: 24px;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--white-dim);
+    line-height: 1.7;
+    max-width: 320px;
+    margin-bottom: 32px;
+  }
+
+  .card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .status-live { color: #4ade80; }
+  .status-live::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse-green 2s infinite;
+  }
+  .status-soon { color: var(--gold); }
+  .status-soon::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .card-arrow {
+    position: absolute;
+    bottom: 48px; right: 48px;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+  .product-card:hover .card-arrow {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: rotate(45deg);
+  }
+  .card-arrow svg { width: 12px; height: 12px; }
+  .product-card:hover .card-arrow svg path { stroke: var(--black); }
+
+  /* STATS */
+  .stats-section {
+    padding: 80px 48px;
+    background: var(--deep);
+    border-top: 1px solid rgba(201,168,76,0.06);
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
+
+  /* ABOUT / PHILOSOPHY */
+  .philosophy {
+    padding: 140px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .philosophy-quote {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .philosophy-quote em { font-style: italic; color: var(--gold); }
+
+  .philosophy-body {
+    font-size: 15px;
+    color: var(--white-dim);
+    line-height: 1.85;
+  }
+  .philosophy-body p + p { margin-top: 20px; }
+
+  .philosophy-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 28px 0;
+  }
+
+  /* MARQUEE */
+  .marquee-section {
+    padding: 40px 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(201,168,76,0.06);
+    border-bottom: 1px solid rgba(201,168,76,0.06);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 64px;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-item {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(245,244,240,0.15);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+  .marquee-item span { color: var(--gold); margin: 0 32px; }
+
+  /* FOOTER */
+  footer {
+    padding: 80px 48px 40px;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+  }
+  .footer-brand .logo-text {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .footer-tagline {
+    font-size: 13px;
+    color: var(--white-dim);
+    max-width: 260px;
+    line-height: 1.6;
+  }
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    gap: 40px;
+  }
+  .footer-col-title {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 13px;
+    color: var(--white-dim);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+    border-top: 1px solid rgba(245,244,240,0.05);
+    font-size: 12px;
+    color: rgba(245,244,240,0.25);
+  }
+  .footer-msme {
+    font-size: 11px;
+    color: rgba(245,244,240,0.2);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+  @keyframes pulse-green {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
+    50% { box-shadow: 0 0 0 4px rgba(74,222,128,0); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 80px; }
+    .section { padding: 80px 24px; }
+    .products-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .philosophy { grid-template-columns: 1fr; padding: 80px 24px; gap: 40px; }
+    .footer-top { flex-direction: column; gap: 40px; }
+    .footer-links { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="navGold" x1="20" y1="16" x2="44" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#e8c97a"/><stop offset="1" stop-color="#c9a84c"/></linearGradient></defs>
+        <ellipse cx="32" cy="33" rx="27" ry="9.5" transform="rotate(-20 32 33)" stroke="#c9a84c" stroke-width="1.4" opacity="0.45"/>
+        <circle cx="32" cy="30" r="13" fill="url(#navGold)"/>
+        <path d="M5.5 38 A27 9.5 0 0 0 58.5 28" transform="rotate(-20 32 33)" stroke="#c9a84c" stroke-width="1.8" fill="none"/>
+      </svg>
+    </div>
+    <span class="logo-text">Real <span>Plannet</span></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#wealth">Wealth</a></li>
+  </ul>
+
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('hi')">हि</button>
+    <button class="lang-btn" onclick="setLang('ml')">മ</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-grid"></div>
+
+  <p class="hero-eyebrow reveal">Real Solutions · Registered MSME · India</p>
+
+  <h1 class="hero-title reveal" id="heroTitle">
+    One platform for<br>
+    <em>real</em> <span class="line-2">decisions.</span>
+  </h1>
+
+  <p class="hero-tagline reveal" id="heroTagline">
+    Career tools. Wealth planning. Built for Indians, NRIs, and global professionals who demand clarity over noise.
+  </p>
+  <p class="hero-tagline-hi" id="heroTaglineHi">करियर और धन — एक मंच पर। सरल। असली। आपके लिए।</p>
+  <p class="hero-tagline-ml" id="heroTaglineMl">ഒരു പ്ലാറ്റ്‌ഫോം. കരിയർ. സമ്പത്ത്. യഥാർഥ പരിഹാരങ്ങൾ.</p>
+
+  <div class="hero-cta reveal">
+    <a href="#career" class="btn-primary">Explore Career Tools</a>
+    <a href="#wealth" class="btn-ghost">Wealth Planning →</a>
+  </div>
+
+  <div class="scroll-indicator reveal">
+    <span class="scroll-text">Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Career Planning <span>·</span></span>
+    <span class="marquee-item">Wealth Management <span>·</span></span>
+    <span class="marquee-item">NRI Solutions <span>·</span></span>
+    <span class="marquee-item">Real Tools <span>·</span></span>
+    <span class="marquee-item">Real Decisions <span>·</span></span>
+    <span class="marquee-item">Real Plannet <span>·</span></span>
+    <span class="marquee-item">Career Planning <span>·</span></span>
+    <span class="marquee-item">Wealth Management <span>·</span></span>
+    <span class="marquee-item">NRI Solutions <span>·</span></span>
+    <span class="marquee-item">Real Tools <span>·</span></span>
+    <span class="marquee-item">Real Decisions <span>·</span></span>
+    <span class="marquee-item">Real Plannet <span>·</span></span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="section" id="solutions">
+  <div style="max-width:1100px;margin:0 auto;">
+    <p class="section-label reveal">Our Solutions</p>
+    <h2 class="section-title reveal">Tools built for <em>real</em> outcomes.</h2>
+
+    <div class="products-grid">
+
+      <!-- Career -->
+      <a href="https://career.realplannet.com" class="product-card reveal" id="career">
+        <span class="card-number">01</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="16" width="32" height="24" rx="1" stroke="#c9a84c" stroke-width="1.2"/>
+            <path d="M16 16V12a8 8 0 0116 0v4" stroke="#c9a84c" stroke-width="1.2"/>
+            <line x1="24" y1="24" x2="24" y2="32" stroke="#c9a84c" stroke-width="1.2"/>
+            <line x1="20" y1="28" x2="28" y2="28" stroke="#c9a84c" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Career Blueprint</h3>
+        <p class="card-desc">Career planning — engineered for professionals in UAE, GCC, and India.</p>
+        <span class="card-status status-live">Live Now</span>
+        <div class="card-arrow">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+      </a>
+
+      <!-- Wealth -->
+      <a href="https://wealth.realplannet.com" class="product-card reveal" id="wealth">
+        <span class="card-number">02</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="8,36 18,24 26,30 40,12" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="40" cy="12" r="3" stroke="#c9a84c" stroke-width="1.2"/>
+            <line x1="8" y1="40" x2="40" y2="40" stroke="#c9a84c" stroke-width="1.2" opacity="0.4"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Wealth Compass</h3>
+        <p class="card-desc">Investment planning, strategy planning, mutual fund tracking, and retirement planning for the global Indian.</p>
+        <span class="card-status status-live">Live Now</span>
+        <div class="card-arrow">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+      </a>
+
+      <!-- FM Consulting -->
+      <a href="#" class="product-card reveal">
+        <span class="card-number">03</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="20" width="28" height="20" stroke="#c9a84c" stroke-width="1.2"/>
+            <path d="M16 20V14l8-6 8 6v6" stroke="#c9a84c" stroke-width="1.2"/>
+            <rect x="20" y="30" width="8" height="10" stroke="#c9a84c" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Property Intel</h3>
+        <p class="card-desc">FM advisory, community management insights, and property tools for UAE/GCC asset owners and managers.</p>
+        <span class="card-status status-soon">Coming Soon</span>
+        <div class="card-arrow">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+      </a>
+
+      <!-- More -->
+      <div class="product-card reveal" style="background: linear-gradient(135deg, rgba(201,168,76,0.05), rgba(10,10,15,0.8)); border: 1px dashed rgba(201,168,76,0.15); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height: 280px;">
+        <span class="card-number" style="position:relative; top:auto; right:auto; font-size:48px; margin-bottom:16px;">+</span>
+        <h3 class="card-title" style="font-size:22px;">More on the way</h3>
+        <p class="card-desc" style="font-size:13px; text-align:center; max-width:240px;">Tax tools, visa planning, NRI banking guides — one platform, many solutions.</p>
+        <span class="card-status status-soon" style="margin-top:8px;">Roadmap 2025–26</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="reveal">
+      <div class="stat-number">30M+</div>
+      <div class="stat-label">NRIs Worldwide</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Languages Supported</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-number">MSME</div>
+      <div class="stat-label">Registered · India</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-number">KISS</div>
+      <div class="stat-label">Keep It Simple</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<div class="philosophy" id="about">
+  <div class="reveal">
+    <h2 class="philosophy-quote">
+      The best solution is always the <em>simplest</em> one that works.
+    </h2>
+  </div>
+  <div class="reveal">
+    <p class="philosophy-body">
+      <p style="font-size:13px; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">Our Philosophy</p>
+      <p style="font-size:15px; color:var(--white-dim); line-height:1.85;">Real Plannet was built on one belief: that real people — Indians at home and abroad — deserve tools that cut through complexity and deliver clarity.</p>
+      <div class="philosophy-divider"></div>
+      <p style="font-size:15px; color:var(--white-dim); line-height:1.85;">No jargon. No noise. No unnecessary steps. Every product we build starts with the question: <em style="color:var(--white)">"What does a real person actually need?"</em></p>
+      <div style="margin-top:32px;">
+        <a href="#solutions" class="btn-primary" style="display:inline-block;">Explore Platform</a>
+      </div>
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo-text">Real <span style="color:var(--gold)">Plannet</span></span>
+      <p class="footer-tagline">One platform. Real solutions. Built for Indians, NRIs, and global professionals.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <p class="footer-col-title">Products</p>
+        <a href="https://career.realplannet.com">Career Blueprint</a>
+        <a href="https://wealth.realplannet.com">Wealth Compass</a>
+        <a href="https://raneesh.net">Property Intel</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Company</p>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal</p>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Refund</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Real Plannet. All rights reserved.</span>
+    <div class="footer-msme">
+      <strong style="color:rgba(245,244,240,0.4)">Real Plannet</strong> · A registered MSME<br>
+      Udyam Registration · India
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX - 4 + 'px';
+    cursor.style.top = mouseY - 4 + 'px';
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX - 16) * 0.12;
+    ringY += (mouseY - ringY - 16) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(2)';
+      ring.style.transform = 'scale(1.5)';
+      ring.style.borderColor = 'rgba(201,168,76,0.8)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      ring.style.transform = 'scale(1)';
+      ring.style.borderColor = 'rgba(201,168,76,0.5)';
+    });
+  });
+
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Hide the decorative scroll cue whenever it would collide with the
+  // hero CTA buttons (short or zoomed viewports) — checked precisely
+  // rather than via a fixed height breakpoint.
+  function fitScrollCue() {
+    const cue = document.querySelector('.scroll-indicator');
+    const cta = document.querySelector('.hero-cta');
+    if (!cue || !cta) return;
+    cue.style.display = '';
+    const c = cue.getBoundingClientRect();
+    const b = cta.getBoundingClientRect();
+    if (c.top < b.bottom + 20) cue.style.display = 'none';
+  }
+  window.addEventListener('load', fitScrollCue);
+  window.addEventListener('resize', fitScrollCue);
+  fitScrollCue();
+
+  // Fallback: if the IntersectionObserver never fires (some embedded
+  // preview environments freeze it), force content visible so the page
+  // is never blank. Real browsers reveal in-view items first, so this
+  // no-ops there and the scroll stagger is preserved.
+  setTimeout(() => {
+    const anyVisible = [...reveals].some(el => el.classList.contains('visible'));
+    if (!anyVisible) reveals.forEach(el => {
+      el.style.transition = 'none';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.classList.add('visible');
+    });
+  }, 600);
+
+  // Language switcher
+  function setLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+
+    const tagline = document.getElementById('heroTagline');
+    const taglineHi = document.getElementById('heroTaglineHi');
+    const taglineMl = document.getElementById('heroTaglineMl');
+
+    tagline.style.display = lang === 'en' ? 'block' : 'none';
+    taglineHi.style.display = lang === 'hi' ? 'block' : 'none';
+    taglineMl.style.display = lang === 'ml' ? 'block' : 'none';
+
+    if (lang === 'hi') taglineHi.style.display = 'block';
+    if (lang === 'ml') taglineMl.style.display = 'block';
+  }
+</script>
+</body>
+</html>
