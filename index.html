@@ -1218,10 +1218,10 @@
         msg.textContent = "Sent. We’ll be in touch shortly.";
         setTimeout(closeContactModal, 2000);
       } else {
-        msg.textContent = ‘Something went wrong. Email us at hello@realplannet.com’;
+        msg.textContent = ‘Error: ‘ + (data.message || JSON.stringify(data));
       }
     } catch(err) {
-      msg.textContent = ‘Something went wrong. Email us at hello@realplannet.com’;
+      msg.textContent = ‘Error: ‘ + err.message;
     }
   }
 </script>
