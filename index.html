@@ -1123,6 +1123,10 @@
       <p style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--white-dim); margin-bottom:8px;">Email</p>
       <input id="gcEmail" type="email" placeholder="you@example.com" required style="width:100%; background:rgba(245,244,240,0.04); border:1px solid rgba(201,168,76,0.15); color:var(--white); font-family:var(--font-body); font-size:13px; padding:10px 14px; outline:none; box-sizing:border-box;">
     </div>
+    <div style="margin-bottom:20px;">
+      <p style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--white-dim); margin-bottom:8px;">Phone (optional)</p>
+      <input id="gcPhone" type="tel" placeholder="+971 50 000 0000" style="width:100%; background:rgba(245,244,240,0.04); border:1px solid rgba(201,168,76,0.15); color:var(--white); font-family:var(--font-body); font-size:13px; padding:10px 14px; outline:none; box-sizing:border-box;">
+    </div>
     <div style="margin-bottom:28px;">
       <p style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--white-dim); margin-bottom:8px;">Message</p>
       <textarea id="gcMessage" rows="4" placeholder="How can we help?" required style="width:100%; background:rgba(245,244,240,0.04); border:1px solid rgba(201,168,76,0.15); color:var(--white); font-family:var(--font-body); font-size:13px; padding:10px 14px; outline:none; resize:vertical; box-sizing:border-box;"></textarea>
@@ -1260,6 +1264,7 @@
     document.getElementById('gcMsg').textContent = '';
     document.getElementById('gcName').value = '';
     document.getElementById('gcEmail').value = '';
+    document.getElementById('gcPhone').value = '';
     document.getElementById('gcMessage').value = '';
   }
 
@@ -1279,9 +1284,11 @@
 
     try {
       const formData = new FormData();
+      const phone = document.getElementById('gcPhone').value.trim();
       formData.append('access_key', '6b2d27be-8ec4-4451-bbde-60cf87024859');
       formData.append('name', name);
       formData.append('email', email);
+      if (phone) formData.append('phone', phone);
       formData.append('message', message);
 
       const res = await fetch('https://api.web3forms.com/submit', {
