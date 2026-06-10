@@ -1198,18 +1198,18 @@
     msg.textContent = 'Sending...';
 
     try {
+      const formData = new FormData();
+      formData.append(‘access_key’, ‘c3284aaf-c7a1-4014-98e4-2ced4830347e’);
+      formData.append(‘subject’, ‘New Digital Presence Enquiry — Real Plannet’);
+      formData.append(‘from_name’, ‘Real Plannet Website’);
+      formData.append(‘email’, email);
+      formData.append(‘phone’, phone);
+      formData.append(‘services’, services.join(‘, ‘));
+      formData.append(‘message’, message || ‘—‘);
+
       const res = await fetch(‘https://api.web3forms.com/submit’, {
         method: ‘POST’,
-        headers: { ‘Content-Type’: ‘application/json’ },
-        body: JSON.stringify({
-          access_key: ‘c3284aaf-c7a1-4014-98e4-2ced4830347e’,
-          subject: ‘New Digital Presence Enquiry — Real Plannet’,
-          from_name: ‘Real Plannet Website’,
-          email: email,
-          phone: phone,
-          services: services.join(‘, ‘),
-          message: message || ‘—‘
-        })
+        body: formData
       });
 
       const data = await res.json();
