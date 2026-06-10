@@ -791,7 +791,7 @@
       </a>
 
       <!-- Digital Presence -->
-      <a href="#" class="product-card reveal" id="digitalPresenceCard">
+      <div class="product-card reveal" id="digitalPresenceCard" style="cursor:pointer;" onclick="openContactModal(event)">
         <span class="card-number">03</span>
         <div class="card-icon">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -811,7 +811,7 @@
         <div class="card-arrow">
           <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/></svg>
         </div>
-      </a>
+      </div>
 
       <!-- More -->
       <div class="product-card reveal" style="background: linear-gradient(135deg, rgba(201,168,76,0.05), rgba(10,10,15,0.8)); border: 1px dashed rgba(201,168,76,0.15); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height: 280px;">
@@ -1151,6 +1151,11 @@
       </div>
     </div>
 
+    <div style="margin-bottom:20px;">
+      <p style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--white-dim); margin-bottom:8px;">Message (optional)</p>
+      <textarea id="contactMessage" rows="3" placeholder="Tell us about your project..." style="width:100%; background:rgba(245,244,240,0.04); border:1px solid rgba(201,168,76,0.15); color:var(--white); font-family:var(--font-body); font-size:13px; padding:10px 14px; outline:none; resize:vertical; box-sizing:border-box;"></textarea>
+    </div>
+
     <p id="contactMsg" style="font-size:12px; color:var(--gold); min-height:18px; margin-bottom:16px;"></p>
 
     <button onclick="submitContact()" style="background:var(--gold); color:var(--black); border:none; padding:14px 32px; font-family:var(--font-body); font-size:12px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:opacity 0.3s;">
@@ -1161,28 +1166,16 @@
 
 <script>
   function openContactModal(e) {
-    if (e) e.preventDefault();
     const modal = document.getElementById('contactModal');
     modal.style.display = 'flex';
     modal.style.alignItems = 'center';
     modal.style.justifyContent = 'center';
     document.getElementById('contactMsg').textContent = '';
-    // reset checkboxes
     document.querySelectorAll('#serviceOptions input').forEach(i => i.checked = false);
     document.getElementById('contactEmail').value = '';
     document.getElementById('contactPhone').value = '';
+    document.getElementById('contactMessage').value = '';
   }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const card = document.getElementById('digitalPresenceCard');
-    if (card) {
-      card.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        openContactModal(null);
-      });
-    }
-  });
 
   function closeContactModal() {
     document.getElementById('contactModal').style.display = 'none';
@@ -1196,6 +1189,7 @@
     const services = [...document.querySelectorAll('#serviceOptions input:checked')].map(i => i.value);
     const email = document.getElementById('contactEmail').value.trim();
     const phone = document.getElementById('contactPhone').value.trim();
+    const message = document.getElementById('contactMessage').value.trim();
     const msg = document.getElementById('contactMsg');
 
     if (!email || !phone) { msg.textContent = 'Please enter your email and phone.'; return; }
@@ -1214,17 +1208,21 @@
           from: 'enquiries@realplannet.com',
           to: 'hello@realplannet.com',
           subject: 'New Digital Presence Enquiry — Real Plannet',
-          html: `<h2>New Enquiry</h2><p><strong>Services:</strong> ${services.join(', ')}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone}</p>`
+          html: `<h2>New Enquiry</h2>
+<p><strong>Services:</strong> ${services.join(', ')}</p>
+<p><strong>Email:</strong> ${email}</p>
+<p><strong>Phone:</strong> ${phone}</p>
+${message ? `<p><strong>Message:</strong> ${message}</p>` : ''}`
         })
       });
 
       if (res.ok) {
-        msg.textContent = 'Sent. We'll be in touch shortly.';
+        msg.textContent = "Sent. We’ll be in touch shortly.";
         setTimeout(closeContactModal, 2000);
       } else {
         msg.textContent = 'Something went wrong. Email us at hello@realplannet.com';
       }
-    } catch(e) {
+    } catch(err) {
       msg.textContent = 'Something went wrong. Email us at hello@realplannet.com';
     }
   }
