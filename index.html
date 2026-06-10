@@ -791,7 +791,7 @@
       </a>
 
       <!-- Digital Presence -->
-      <a href="#contact" class="product-card reveal" onclick="openContactModal(event)">
+      <a href="#" class="product-card reveal" id="digitalPresenceCard">
         <span class="card-number">03</span>
         <div class="card-icon">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1173,11 +1173,15 @@
     document.getElementById('contactPhone').value = '';
   }
 
-  // Attach via JS as backup for inline onclick
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('a[href="#contact"]').forEach(el => {
-      el.addEventListener('click', openContactModal);
-    });
+    const card = document.getElementById('digitalPresenceCard');
+    if (card) {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        openContactModal(null);
+      });
+    }
   });
 
   function closeContactModal() {
