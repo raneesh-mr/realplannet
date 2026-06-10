@@ -1110,7 +1110,7 @@
 
 <!-- CONTACT MODAL -->
 <div id="contactModal" style="display:none; position:fixed; inset:0; z-index:9000; background:rgba(5,5,8,0.92); backdrop-filter:blur(12px); align-items:center; justify-content:center;">
-  <div style="background:var(--deep); border:1px solid rgba(201,168,76,0.15); max-width:520px; width:90%; padding:48px 40px; position:relative;">
+  <div style="background:var(--deep); border:1px solid rgba(201,168,76,0.15); max-width:520px; width:90%; padding:48px 40px; position:relative; max-height:90vh; overflow-y:auto;">
     <button onclick="closeContactModal()" style="position:absolute; top:20px; right:24px; background:none; border:none; color:var(--white-dim); font-size:20px; cursor:pointer; line-height:1;">×</button>
     <p style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Get Started</p>
     <h3 style="font-family:var(--font-display); font-size:28px; font-weight:300; margin-bottom:8px;">Digital Presence</h3>
@@ -1118,7 +1118,7 @@
 
     <div style="margin-bottom:28px;">
       <p style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--white-dim); margin-bottom:14px;">Services</p>
-      <div id="serviceOptions" style="display:flex; flex-direction:column; gap:10px;">
+      <div id="serviceOptions" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
         <label style="display:flex; align-items:center; gap:12px; cursor:pointer; font-size:13px; color:var(--white-dim);">
           <input type="checkbox" value="Website Design & Build" style="accent-color:var(--gold);"> Website Design &amp; Build
         </label>
