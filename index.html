@@ -1205,7 +1205,7 @@
       formData.append(‘email’, email);
       formData.append(‘phone’, phone);
       formData.append(‘services’, services.join(‘, ‘));
-      formData.append(‘message’, message || ‘—‘);
+      formData.append(‘message’, message || ‘(no message)’);
 
       const res = await fetch(‘https://api.web3forms.com/submit’, {
         method: ‘POST’,
@@ -1215,7 +1215,7 @@
       const data = await res.json();
 
       if (data.success) {
-        msg.textContent = "Sent. We’ll be in touch shortly.";
+        msg.textContent = "Sent. We will be in touch shortly.";
         setTimeout(closeContactModal, 2000);
       } else {
         msg.textContent = ‘Error: ‘ + (data.message || JSON.stringify(data));
