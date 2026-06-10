@@ -1198,32 +1198,30 @@
     msg.textContent = 'Sending...';
 
     try {
-      const res = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer re_SfemRz8K_NApHuH7pPgMtT44P8Nduf88C'
-        },
+      const res = await fetch(‘https://api.web3forms.com/submit’, {
+        method: ‘POST’,
+        headers: { ‘Content-Type’: ‘application/json’ },
         body: JSON.stringify({
-          from: 'enquiries@realplannet.com',
-          to: 'hello@realplannet.com',
-          subject: 'New Digital Presence Enquiry — Real Plannet',
-          html: `<h2>New Enquiry</h2>
-<p><strong>Services:</strong> ${services.join(', ')}</p>
-<p><strong>Email:</strong> ${email}</p>
-<p><strong>Phone:</strong> ${phone}</p>
-${message ? `<p><strong>Message:</strong> ${message}</p>` : ''}`
+          access_key: ‘c3284aaf-c7a1-4014-98e4-2ced4830347e’,
+          subject: ‘New Digital Presence Enquiry — Real Plannet’,
+          from_name: ‘Real Plannet Website’,
+          email: email,
+          phone: phone,
+          services: services.join(‘, ‘),
+          message: message || ‘—‘
         })
       });
 
-      if (res.ok) {
+      const data = await res.json();
+
+      if (data.success) {
         msg.textContent = "Sent. We’ll be in touch shortly.";
         setTimeout(closeContactModal, 2000);
       } else {
-        msg.textContent = 'Something went wrong. Email us at hello@realplannet.com';
+        msg.textContent = ‘Something went wrong. Email us at hello@realplannet.com’;
       }
     } catch(err) {
-      msg.textContent = 'Something went wrong. Email us at hello@realplannet.com';
+      msg.textContent = ‘Something went wrong. Email us at hello@realplannet.com’;
     }
   }
 </script>
