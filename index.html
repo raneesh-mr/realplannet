@@ -1161,11 +1161,24 @@
 
 <script>
   function openContactModal(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const modal = document.getElementById('contactModal');
     modal.style.display = 'flex';
+    modal.style.alignItems = 'center';
+    modal.style.justifyContent = 'center';
     document.getElementById('contactMsg').textContent = '';
+    // reset checkboxes
+    document.querySelectorAll('#serviceOptions input').forEach(i => i.checked = false);
+    document.getElementById('contactEmail').value = '';
+    document.getElementById('contactPhone').value = '';
   }
+
+  // Attach via JS as backup for inline onclick
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href="#contact"]').forEach(el => {
+      el.addEventListener('click', openContactModal);
+    });
+  });
 
   function closeContactModal() {
     document.getElementById('contactModal').style.display = 'none';
