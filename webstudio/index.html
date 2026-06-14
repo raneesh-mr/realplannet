@@ -601,6 +601,7 @@ h1.headline {
 .cta-title { font-size: clamp(34px, 4vw, 56px); font-weight: 300; margin-bottom: 14px; }
 .cta-sub { font-size: 15px; color: var(--white-dim); margin-bottom: 40px; }
 .cta-form {
+  flex-wrap: wrap;
   display: flex; align-items: center; gap: 10px;
   justify-content: center; flex-wrap: wrap; margin-bottom: 14px;
 }
@@ -1287,6 +1288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="cta-sub">Tell us about your project. We'll get back to you within 24 hours.</p>
       <div class="cta-form">
         <input type="email" class="cta-inp" id="ctaEmail" placeholder="your@email.com" aria-label="Email address">
+        <input type="tel" class="cta-inp" id="ctaMobile" placeholder="+971 or +91 mobile number" aria-label="Mobile number">
         <button class="btn-gold" id="ctaBtn">Get Free Quote</button>
       </div>
       <p class="cta-note">Response within 24 hours.</p>
@@ -1402,4 +1404,94 @@ document.getElementById('mobClose').addEventListener('click', closeMob);
     }, { threshold: 0.08, rootMargin: '0px 0px 80px 0px' });
     els.forEach(function (el) { obs.observe(el); });
   } else {
-    // Fallback: reveal o
+    // Fallback: reveal on scroll
+    function check() {
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight + 80) el.classList.add('visible');
+      });
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  }
+})();
+
+// ── Pricing toggle ──
+(function () {
+  var toggle = document.getElementById('curToggle');
+  var lblA = document.getElementById('lblAed');
+  var lblI = document.getElementById('lblInr');
+  var vals = document.querySelectorAll('.pv');
+  var inr = false;
+
+  function set() {
+    toggle.classList.toggle('on', inr);
+    lblA.classList.toggle('on', !inr);
+    lblI.classList.toggle('on', inr);
+    vals.forEach(function (v) { v.textContent = inr ? v.dataset.inr : v.dataset.aed; });
+  }
+
+  toggle.addEventListener('click', function () { inr = !inr; set(); });
+  toggle.addEventListener('keydown', function (e) { if (e.key === ' ' || e.key === 'Enter') { inr = !inr; set(); e.preventDefault(); } });
+})();
+
+// ── FAQ accordion ──
+(function () {
+  document.querySelectorAll('.faq-q').forEach(function (q) {
+    q.addEventListener('click', function () {
+      var open = q.classList.contains('open');
+      document.querySelectorAll('.faq-q').forEach(function (qq) {
+        qq.classList.remove('open');
+        qq.nextElementSibling.classList.remove('open');
+      });
+      if (!open) { q.classList.add('open'); q.nextElementSibling.classList.add('open'); }
+    });
+  });
+})();
+
+// ── CTA form ──
+document.getElementById('ctaBtn').addEventListener('click', function () {
+  var inp = document.getElementById('ctaEmail');
+  var mob = document.getElementById('ctaMobile');
+  var btn = this;
+  var note = document.querySelector('.cta-note');
+  if (!inp.value || !inp.value.includes('@')) {
+    inp.style.borderColor = 'rgba(201,168,76,0.6)';
+    inp.focus();
+    return;
+  }
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      access_key: 'fb69fef3-ceb3-4160-9474-c0255b40aec9',
+      subject: 'New Quote Request — Real Plannet Web Studio',
+      from_name: 'Web Studio Lead',
+      email: inp.value,
+      message: 'Email: ' + inp.value + '\nMobile: ' + (mob.value || 'Not provided')
+    })
+  })
+  .then(function (r) { return r.json(); })
+  .then(function (data) {
+    if (data.success) {
+      btn.textContent = 'Sent ✦';
+      btn.style.background = 'rgba(201,168,76,0.12)';
+      btn.style.color = 'var(--gold)';
+      btn.style.border = '1px solid var(--gold)';
+      inp.value = '';
+      if (note) note.textContent = "We'll be in touch within 24 hours.";
+    } else {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  })
+  .catch(function () {
+    btn.textContent = 'Try Again';
+    btn.disabled = false;
+  });
+});
+</script>
+</body>
+</html>
