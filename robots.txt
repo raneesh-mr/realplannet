@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://realplannet.com/sitemap.xml
