@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Real Plannet | Careers, Wealth, CVs &amp; Digital Presence</title>
+<meta name="description" content="Practical writing on career decisions, personal finance clarity, recruiter-ready CVs, and getting a small business found online — from the studio behind Career Blueprint, Wealth Compass, Make My CV and Digital Presence.">
+<link rel="canonical" href="https://realplannet.com/blog/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Real Plannet">
+<meta property="og:title" content="Blog — Real Plannet">
+<meta property="og:description" content="Practical writing on career decisions, personal finance, CVs and getting found online.">
+<meta property="og:url" content="https://realplannet.com/blog/">
+<meta property="og:image" content="https://realplannet.com/assets/icon-512.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog — Real Plannet">
+<meta name="twitter:description" content="Practical writing on career decisions, personal finance, CVs and getting found online.">
+<meta name="twitter:image" content="https://realplannet.com/assets/icon-512.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/blog.css">
+
+<!-- ============================================================
+     BLOG INDEX
+     TO ADD A POST:
+       1. Copy _TEMPLATE.html → your-slug.html, fill it in
+       2. Add ONE <a class="card"> block below (newest first)
+       3. Add the URL to /sitemap.xml
+       4. Add it to the "blogPost" array in the JSON-LD at the
+          bottom of this file
+     See README.md in this folder for the full checklist.
+     ============================================================ -->
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="/" class="brand">Real <span class="g">P</span>lannet<small>Architects of Simplified Digital Solutions</small></a>
+    <div class="nav-links">
+      <a href="/#solutions">Solutions</a>
+      <a href="/work.html">Our Work</a>
+      <a href="/blog/" class="active">Blog</a>
+      <a href="/#about">About</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Blog · Real Plannet</span>
+    <h1>Things worth<br>knowing, written <em>plainly.</em></h1>
+    <p class="lede">We build tools for career decisions, personal finance, CVs and small-business web presence. This is what we've learned doing it — written for the person with the problem, not for a search engine.</p>
+
+    <div class="cats">
+      <button class="cat active" data-cat="all">All</button>
+      <button class="cat" data-cat="career">Career</button>
+      <button class="cat" data-cat="wealth">Wealth</button>
+      <button class="cat" data-cat="cv">CVs</button>
+      <button class="cat" data-cat="digital">Digital Presence</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="posts" id="posts">
+
+    <!-- ===== POST 1 ===== -->
+    <a class="card" href="/blog/gulf-contractors-lose-work-online.html" data-cat="digital">
+      <span class="card-tag">Digital Presence</span>
+      <h2>Why Gulf contractors lose work they've already won</h2>
+      <p>A facility manager gets your name in a meeting. Before it reaches the shortlist, someone searches it. What happens in the next four seconds decides whether you get the call.</p>
+      <div class="card-meta"><span>7 min read</span><span>Aug 2026</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <!-- ===== POST 2 ===== -->
+    <a class="card" href="/blog/choosing-a-degree-without-guessing.html" data-cat="career">
+      <span class="card-tag">Career</span>
+      <h2>The ₹40 lakh decision most people make on a hunch</h2>
+      <p>Four years and the cost of a degree, chosen on advice from people who last entered the job market decades ago. There is a better way to decide, and it isn't a personality quiz.</p>
+      <div class="card-meta"><span>8 min read</span><span>Aug 2026</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <!-- ===== POST 3 ===== -->
+    <a class="card" href="/blog/your-cv-is-not-being-read.html" data-cat="cv">
+      <span class="card-tag">CVs</span>
+      <h2>Your CV isn't being rejected. It isn't being read.</h2>
+      <p>Forty applications, no replies. Most people conclude they aren't good enough. Usually the problem is mechanical, happens before a human sees anything, and takes an hour to fix.</p>
+      <div class="card-meta"><span>7 min read</span><span>Aug 2026</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <!-- ===== POST 4 ===== -->
+    <a class="card" href="/blog/you-dont-have-a-money-problem.html" data-cat="wealth">
+      <span class="card-tag">Wealth</span>
+      <h2>You don't have a money problem. You have a visibility problem.</h2>
+      <p>Ask someone what they earn and they answer instantly. Ask what their portfolio actually returned last year, net of everything, and you get a pause. That pause is the whole problem.</p>
+      <div class="card-meta"><span>6 min read</span><span>Aug 2026</span><span class="card-arrow">→</span></div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Real Plannet · Registered MSME · UDYAM-KR-03-0705408</span>
+    <span><a href="mailto:hello@realplannet.com">hello@realplannet.com</a> · <a href="/">realplannet.com</a></span>
+  </div>
+</footer>
+
+<script>
+// Category filter — no dependencies, no build step.
+document.querySelectorAll('.cat').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var cat = btn.getAttribute('data-cat');
+    document.querySelectorAll('.cat').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('#posts .card').forEach(function(card){
+      card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? 'flex' : 'none';
+    });
+  });
+});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Blog",
+  "@id":"https://realplannet.com/blog/#blog",
+  "name":"Real Plannet Blog",
+  "url":"https://realplannet.com/blog/",
+  "description":"Practical writing on career decisions, personal finance clarity, recruiter-ready CVs, and getting a small business found online.",
+  "inLanguage":"en",
+  "publisher":{
+    "@type":"Organization",
+    "@id":"https://realplannet.com/#organization",
+    "name":"Real Plannet",
+    "url":"https://realplannet.com/",
+    "logo":{"@type":"ImageObject","url":"https://realplannet.com/assets/icon-512.png"}
+  },
+  "blogPost":[
+    {
+      "@type":"BlogPosting",
+      "headline":"Why Gulf contractors lose work they've already won",
+      "url":"https://realplannet.com/blog/gulf-contractors-lose-work-online.html",
+      "datePublished":"2026-08-14",
+      "author":{"@type":"Organization","name":"Real Plannet"}
+    },
+    {
+      "@type":"BlogPosting",
+      "headline":"The ₹40 lakh decision most people make on a hunch",
+      "url":"https://realplannet.com/blog/choosing-a-degree-without-guessing.html",
+      "datePublished":"2026-08-14",
+      "author":{"@type":"Organization","name":"Real Plannet"}
+    },
+    {
+      "@type":"BlogPosting",
+      "headline":"Your CV isn't being rejected. It isn't being read.",
+      "url":"https://realplannet.com/blog/your-cv-is-not-being-read.html",
+      "datePublished":"2026-08-14",
+      "author":{"@type":"Organization","name":"Real Plannet"}
+    },
+    {
+      "@type":"BlogPosting",
+      "headline":"You don't have a money problem. You have a visibility problem.",
+      "url":"https://realplannet.com/blog/you-dont-have-a-money-problem.html",
+      "datePublished":"2026-08-14",
+      "author":{"@type":"Organization","name":"Real Plannet"}
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
