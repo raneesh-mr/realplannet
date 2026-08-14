@@ -1,3 +1,70 @@
 *.zip
 Real Plannet - Landing.html
 Real Plannet/
+
+# ---------------------------------------------------------------
+# Added 2026-08-14 — this repo publishes to realplannet.com via
+# GitHub Pages. ANY file committed here becomes publicly readable
+# immediately. Keep working files, exports and server code out.
+# ---------------------------------------------------------------
+
+# Cloudflare Workers / Wrangler — may contain bindings and secrets
+.wrangler/
+worker.js
+*-worker*.js
+wrangler.toml
+.dev.vars
+
+# Environment / credentials
+.env
+.env.*
+*.pem
+*.key
+secrets*.json
+
+# Personal / financial / tax records — MUST never reach a public repo
+tax-*
+*-tax-*
+*tax-document*
+*FY20*
+*PAN*
+*aadhaar*
+payslip*
+salary*
+
+# Office documents and working exports (business/financial data)
+*.docx
+*.xlsx
+*.xls
+*.pptx
+.~lock.*#
+~$*
+
+# Data imports (pricing, item masters, customer data)
+Item_Import*.csv
+*Items_Master*
+
+# Internal planning, briefs and system references — not for the public site
+*-SYSTEM-REFERENCE.md
+*-Ad-Brief.md
+*-Execution-Plan.*
+*-Marketing-Plan.*
+*-Revenue-Plan.*
+*razorpay-setup.md
+*-Social-Prompt.md
+finance-tax-analysis.md
+gst-*
+real-plannet-promotion-plan.md
+career-services-product-plan.html
+realplannet-social-brand-script.md
+LinkedIn-*.md
+brand-asset-prompt-*.md
+
+# Backup / alternate versions of live pages
+*-MOBILE-FIX.html
+*-FIXED.js
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini

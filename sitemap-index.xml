@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sitemap index for the whole Real Plannet estate.
+  Submit THIS file to Google Search Console and Bing Webmaster Tools
+  for the realplannet.com property.
+
+  NOTE: the four subdomain sitemaps below do not exist yet.
+  They are listed deliberately so that the index is complete the moment
+  each one is deployed (Session 2 in the action plan). Until then Google
+  will report them as errors in GSC — that is expected and harmless.
+  Remove a line only if you decide that property will never have a sitemap.
+-->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://realplannet.com/sitemap.xml</loc>
+    <lastmod>2026-08-14</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://career.realplannet.com/sitemap.xml</loc>
+    <lastmod>2026-08-14</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://wealth.realplannet.com/sitemap.xml</loc>
+    <lastmod>2026-08-14</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://makemycv.realplannet.com/sitemap.xml</loc>
+    <lastmod>2026-08-14</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://web.realplannet.com/sitemap.xml</loc>
+    <lastmod>2026-08-14</lastmod>
+  </sitemap>
+</sitemapindex>

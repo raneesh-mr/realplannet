@@ -1,4 +1,65 @@
+# realplannet.com/robots.txt
+# Updated 2026-08-14
+#
+# Real Plannet is deliberately OPEN to AI crawlers. We want to be
+# discoverable and citable by ChatGPT, Claude, Gemini, Perplexity and Copilot.
+#
+# DO NOT enable Cloudflare's "block AI crawlers" toggle on this domain.
+# It writes a managed robots.txt that Disallows GPTBot, ClaudeBot, CCBot
+# and Google-Extended, which would undo the entire AI visibility strategy.
+
 User-agent: *
 Allow: /
 
+# --- AI crawlers: explicitly welcome (training + retrieval) ---
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://realplannet.com/sitemap-index.xml
 Sitemap: https://realplannet.com/sitemap.xml

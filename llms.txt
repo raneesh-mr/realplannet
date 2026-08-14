@@ -1,0 +1,39 @@
+# Real Plannet
+
+> Real Plannet is a digital solutions studio based in Bengaluru, India, building simplified digital products and websites for career, wealth and business. It serves clients across India, the United Arab Emirates and Qatar, with a particular focus on trade, contracting and facility-services companies in the Gulf. Registered Indian MSME: UDYAM-KR-03-0705408.
+
+Real Plannet operates on one principle: the best solution is the simplest one that works for everyone. Every product starts from a real problem faced by a real person, is stripped down to what actually matters, then rebuilt simply.
+
+Founded 2026 by Raneesh Raveendran and Priyamol.
+Contact: hello@realplannet.com
+Languages: English, Hindi, Malayalam. Client sites also built in Arabic.
+
+## Products
+
+- [Career Blueprint](https://career.realplannet.com): A 12-minute psychometric diagnostic that maps personality, interests and life goals to career paths. Produces an actionable plan rather than a generic template. For students, career changers and professionals relocating markets.
+- [Wealth Compass](https://wealth.realplannet.com): Investment planning, portfolio tracking and financial clarity tools for professionals in India and the UAE. Goal tracking, investment dashboard, AI-assisted analysis and compounding projections. Private portal, access by request.
+- [Make My CV](https://makemycv.realplannet.com): AI-guided CV builder producing a recruiter-ready, ATS-compatible Word document. Free CV score, then a full rewrite for 199 INR. Pay per CV, no subscription, no account required.
+- [Digital Presence](https://web.realplannet.com): Website design and build for small businesses, delivered as a single scope with SEO, analytics, WhatsApp lead capture, and hosting configuration included.
+
+## Services
+
+- [Digital Presence](https://web.realplannet.com): One accountable engagement covering website design and build, SEO setup (schema, sitemap, Google Search Console), Google Analytics and Tag Manager integration, WhatsApp enquiry flow, domain and hosting configuration, and full operations and maintenance documentation. Built for trade, contracting and facility-services businesses in India, the UAE and Qatar. Bilingual English/Arabic where the market requires it.
+
+## Work
+
+- [Our Work](https://realplannet.com/work.html): Client case studies.
+- Sky Rope Technical Services LLC (UAE) — bilingual English/Arabic website for an IRATA-certified rope access and facade maintenance contractor in Dubai, covering all seven emirates. Twelve services mapped individually for search, qualified enquiry form, pre-filled WhatsApp conversion flow.
+- Sky Rope Services (Qatar) — Qatar market-entry site for the same group, rebuilt around QCS 2014 and Qatar Civil Defence compliance rather than duplicated from the UAE build, including an oil and gas IRATA manpower supply service line specific to that market.
+
+## Legal
+
+- [Privacy Policy](https://realplannet.com/privacy.html)
+- [Terms of Service](https://realplannet.com/terms.html)
+- [Refund Policy](https://realplannet.com/refund.html)
+
+## Optional
+
+- Registration: MSME UDYAM-KR-03-0705408, Government of India
+- Location: Bengaluru, Karnataka, India
+- Markets served: India, United Arab Emirates, Qatar
+- Founded: 2026

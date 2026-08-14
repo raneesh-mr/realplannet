@@ -32,6 +32,157 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     ENTITY SCHEMA — added 2026-08-14
+     Makes Real Plannet a machine-readable named entity so Google's
+     Knowledge Graph and LLMs (ChatGPT, Claude, Gemini, Perplexity)
+     can identify and cite it. Validate any edits at:
+     https://validator.schema.org/  and  https://search.google.com/test/rich-results
+
+     TODO once the LinkedIn company page is live, add to "sameAs":
+       "https://www.linkedin.com/company/real-plannet"
+     Add directory profile URLs (Clutch, GoodFirms, DesignRush, Sortlist)
+     to "sameAs" as each one goes live. That array is what binds every
+     profile of yours across the web into a single entity.
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://realplannet.com/#organization",
+      "name": "Real Plannet",
+      "alternateName": "RealPlannet",
+      "url": "https://realplannet.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://realplannet.com/assets/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://realplannet.com/assets/icon-512.png",
+      "description": "Real Plannet is a digital solutions studio based in Bengaluru, India, building simplified digital products and websites for career, wealth and business, serving India, the UAE and Qatar.",
+      "slogan": "Architects of Simplified Digital Solutions",
+      "email": "hello@realplannet.com",
+      "foundingDate": "2026",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "MSME UDYAM Registration",
+        "value": "UDYAM-KR-03-0705408"
+      },
+      "knowsLanguage": ["en", "hi", "ml"],
+      "areaServed": [
+        { "@type": "Country", "name": "India" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Qatar" }
+      ],
+      "founder": [
+        { "@type": "Person", "name": "Raneesh Raveendran", "jobTitle": "Co-Founder" },
+        { "@type": "Person", "name": "Priyamol", "jobTitle": "Co-Founder" }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "hello@realplannet.com",
+        "availableLanguage": ["English", "Hindi", "Malayalam"]
+      },
+      "sameAs": [
+        "https://career.realplannet.com",
+        "https://wealth.realplannet.com",
+        "https://makemycv.realplannet.com",
+        "https://web.realplannet.com"
+      ],
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@id": "https://realplannet.com/#career-blueprint" } },
+        { "@type": "Offer", "itemOffered": { "@id": "https://realplannet.com/#wealth-compass" } },
+        { "@type": "Offer", "itemOffered": { "@id": "https://realplannet.com/#make-my-cv" } },
+        { "@type": "Offer", "itemOffered": { "@id": "https://realplannet.com/#digital-presence" } }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://realplannet.com/#website",
+      "url": "https://realplannet.com/",
+      "name": "Real Plannet",
+      "publisher": { "@id": "https://realplannet.com/#organization" },
+      "inLanguage": ["en", "hi", "ml"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://realplannet.com/#career-blueprint",
+      "name": "Career Blueprint",
+      "url": "https://career.realplannet.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "A 12-minute psychometric diagnostic that maps personality, interests and life goals to career paths, producing an actionable career plan rather than a generic template.",
+      "publisher": { "@id": "https://realplannet.com/#organization" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://realplannet.com/#wealth-compass",
+      "name": "Wealth Compass",
+      "url": "https://wealth.realplannet.com",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "description": "Investment planning, portfolio tracking and financial clarity tools for professionals in India and the UAE.",
+      "publisher": { "@id": "https://realplannet.com/#organization" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://realplannet.com/#make-my-cv",
+      "name": "Make My CV",
+      "url": "https://makemycv.realplannet.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "AI-guided CV builder producing a recruiter-ready, ATS-compatible Word document. Pay per CV, no subscription.",
+      "publisher": { "@id": "https://realplannet.com/#organization" },
+      "offers": {
+        "@type": "Offer",
+        "price": "199",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://realplannet.com/#digital-presence",
+      "name": "Digital Presence",
+      "url": "https://web.realplannet.com",
+      "serviceType": "Website design, SEO and lead capture for small businesses",
+      "description": "A complete digital presence delivered as one scope: website design and build, SEO setup including schema, sitemap and Search Console, analytics integration, WhatsApp enquiry flow, domain and hosting configuration, and full operations documentation.",
+      "provider": { "@id": "https://realplannet.com/#organization" },
+      "areaServed": [
+        { "@type": "Country", "name": "India" },
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Qatar" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Digital Presence inclusions",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Design & Build" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Setup (Schema, Sitemap, Search Console)" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Analytics Integration" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WhatsApp Enquiry Flow" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Domain & Hosting Configuration" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Full O&M Documentation" } }
+        ]
+      }
+    }
+  ]
+}
+</script>
 <style>
   :root {
     --black: #050508;
@@ -700,6 +851,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <ul class="nav-links">
     <li><a href="#solutions" data-i18n="nav_solutions">Solutions</a></li>
+    <li><a href="/work.html" data-i18n="nav_work">Our Work</a></li>
     <li><a href="#about" data-i18n="nav_about">About</a></li>
     <li><a href="#career" data-i18n="nav_career">Career</a></li>
     <li><a href="#wealth" data-i18n="nav_wealth">Wealth</a></li>
@@ -1035,6 +1187,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const translations = {
     en: {
       nav_solutions: 'Solutions',
+      nav_work: 'Our Work',
       nav_about: 'About',
       nav_career: 'Career',
       nav_wealth: 'Wealth',
@@ -1070,6 +1223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     },
     hi: {
       nav_solutions: 'समाधान',
+      nav_work: 'हमारा काम',
       nav_about: 'हमारे बारे में',
       nav_career: 'करियर',
       nav_wealth: 'संपत्ति',
@@ -1105,6 +1259,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     },
     ml: {
       nav_solutions: 'പരിഹാരങ്ങൾ',
+      nav_work: 'ഞങ്ങളുടെ പ്രവർത്തനങ്ങൾ',
       nav_about: 'ഞങ്ങളെക്കുറിച്ച്',
       nav_career: 'കരിയർ',
       nav_wealth: 'സമ്പത്ത്',

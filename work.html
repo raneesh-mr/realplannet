@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work — Real Plannet | Digital Presence Case Studies</title>
+<meta name="description" content="Real Plannet case studies: bilingual websites, SEO, analytics and WhatsApp lead capture built for Sky Rope Technical Services (UAE), Sky Rope Services (Qatar), Al Shola Auto Spare Parts (Dubai) and a senior FM executive profile.">
+<link rel="canonical" href="https://realplannet.com/work.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Real Plannet">
+<meta property="og:title" content="Our Work — Real Plannet">
+<meta property="og:description" content="Four live builds across the UAE and Qatar. Bilingual sites, SEO, analytics and WhatsApp lead capture — built once, running always.">
+<meta property="og:url" content="https://realplannet.com/work.html">
+<meta property="og:image" content="https://realplannet.com/assets/icon-512.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Our Work — Real Plannet">
+<meta name="twitter:description" content="Four live builds across the UAE and Qatar. Bilingual sites, SEO, analytics and WhatsApp lead capture.">
+<meta name="twitter:image" content="https://realplannet.com/assets/icon-512.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     DEV NOTE — Real Plannet "Our Work" page
+     Built to Brand Guidelines v1.0 (2026):
+       · Palette + type stack per section 01/02
+       · Section labels 10px / 0.2em / uppercase / gold
+       · Buttons: 100px pill, DM Sans 500, 13px, 0.05em, 14px 30px
+         gold filled = primary (one per section), ghost = secondary
+       · Cards 12px radius
+       · Logo: gold "P" in "Plannet" only — core signature, never remove
+
+     ⚠️ KNOWN INCONSISTENCY: index.html's nav renders the whole word
+     "Plannet" in gold. The brand guide specifies the P only. This page
+     follows the guide. Reconcile the two before wider rollout.
+
+     METRICS: Sky Rope figures are client-supplied and approved for
+     publication. AED conversions at 1 AED = 25.97 INR (14 Aug 2026) —
+     recheck if the rate moves materially.
+     ============================================================ -->
+
+<style>
+:root{
+  --black:#050508;
+  --deep:#0a0a0f;
+  --navy:#080d1a;
+  --gold:#c9a84c;
+  --gold-light:#e8c97a;
+  --gold-dim:rgba(201,168,76,0.15);
+  --white:#f5f4f0;
+  --white-dim:rgba(245,244,240,0.6);
+  --white-faint:rgba(245,244,240,0.06);
+  --radius-card:12px;
+  --radius-pill:100px;
+  --font-display:'Cormorant Garamond', serif;
+  --font-body:'DM Sans', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:var(--font-body);
+  font-weight:300;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1180px,90vw);margin:0 auto}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:22px 0;
+  background:rgba(5,5,8,0.72);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--white-faint);
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+/* Brand guide 03: the gold second "P" in "Plannet" is a core brand
+   signature — never remove it. Only the P is gold, not the whole word. */
+.brand{font-family:var(--font-display);font-size:1.45rem;font-weight:400;letter-spacing:.05em}
+.brand .g{color:var(--gold)}
+.brand small{
+  display:block;font-family:var(--font-body);font-size:.58rem;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--white-dim);margin-top:2px
+}
+.nav-links{display:flex;gap:34px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
+.nav-links a{color:var(--white-dim);transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+@media(max-width:820px){.nav-links{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:190px 0 90px;position:relative;overflow:hidden}
+.hero::after{
+  content:'';position:absolute;top:-30%;right:-10%;width:60vw;height:60vw;
+  background:radial-gradient(circle,var(--gold-dim) 0%,transparent 62%);
+  pointer-events:none;
+}
+/* Brand guide 02/05: section label — 10px · 0.2em · uppercase · gold */
+.eyebrow{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:26px;display:block
+}
+h1{
+  font-family:var(--font-display);font-weight:300;
+  font-size:clamp(2.9rem,7vw,5.2rem);line-height:1.05;letter-spacing:-.01em
+}
+h1 em{font-style:italic;color:var(--gold)}
+.lede{
+  max-width:60ch;margin-top:30px;color:var(--white-dim);
+  font-size:clamp(1rem,1.5vw,1.13rem)
+}
+
+/* ---------- stat strip ---------- */
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;background:var(--white-faint);
+  border-top:1px solid var(--white-faint);border-bottom:1px solid var(--white-faint);
+  margin-top:70px
+}
+.stat{background:var(--black);padding:34px 26px}
+.stat b{
+  display:block;font-family:var(--font-display);font-size:2.5rem;
+  font-weight:300;color:var(--gold);line-height:1
+}
+.stat span{
+  display:block;margin-top:10px;font-size:.68rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--white-dim)
+}
+
+/* ---------- case study ---------- */
+.case{padding:110px 0;border-bottom:1px solid var(--white-faint)}
+.case:nth-of-type(even){background:var(--deep)}
+.case-head{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap;margin-bottom:14px}
+.case-num{
+  font-family:var(--font-display);font-size:3.4rem;
+  color:var(--gold);opacity:.35;line-height:1
+}
+.case h2{
+  font-family:var(--font-display);font-weight:300;
+  font-size:clamp(2rem,4vw,3.1rem);line-height:1.12
+}
+.case-meta{
+  display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 44px
+}
+.tag{
+  font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:7px 15px;border:1px solid var(--gold-dim);
+  border-radius:999px;color:var(--gold-light)
+}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px}
+@media(max-width:900px){.grid{grid-template-columns:1fr;gap:44px}}
+
+.block{margin-bottom:42px}
+.block h3{
+  font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;font-weight:500
+}
+.block p{color:var(--white-dim);margin-bottom:14px}
+.block p:last-child{margin-bottom:0}
+.block strong{color:var(--white);font-weight:400}
+
+ul.built{list-style:none}
+ul.built li{
+  padding:15px 0 15px 30px;position:relative;
+  border-bottom:1px solid var(--white-faint);color:var(--white-dim)
+}
+ul.built li:last-child{border-bottom:0}
+ul.built li::before{
+  content:'';position:absolute;left:4px;top:24px;
+  width:7px;height:7px;background:var(--gold);
+  transform:rotate(45deg)
+}
+ul.built li b{display:block;color:var(--white);font-weight:400;margin-bottom:3px}
+
+/* ---------- side panel ---------- */
+.panel{
+  border:1px solid var(--white-faint);padding:32px;
+  background:rgba(245,244,240,0.015);position:sticky;top:110px;
+  border-radius:var(--radius-card)
+}
+@media(max-width:900px){.panel{position:static}}
+.panel h4{
+  font-family:var(--font-display);font-size:1.5rem;
+  font-weight:300;margin-bottom:20px
+}
+.kv{display:flex;justify-content:space-between;gap:18px;padding:11px 0;border-bottom:1px solid var(--white-faint);font-size:.87rem}
+.kv:last-of-type{border-bottom:0}
+.kv span{color:var(--white-dim)}
+.kv b{font-weight:400;text-align:right}
+/* Brand guide 04: secondary — gold ghost pill */
+.visit{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:24px;padding:13px 30px;
+  background:transparent;border:1px solid var(--gold);color:var(--gold);
+  font-family:var(--font-body);font-size:13px;font-weight:400;letter-spacing:.05em;
+  border-radius:var(--radius-pill);white-space:nowrap;
+  transition:background .3s
+}
+.visit:hover{background:rgba(201,168,76,0.15);color:var(--gold)}
+
+/* ---------- results / placeholder ---------- */
+.results{
+  margin-top:14px;border-left:2px solid var(--gold);
+  padding:22px 26px;background:var(--gold-dim);
+  border-radius:0 var(--radius-card) var(--radius-card) 0
+}
+.results h3{margin-bottom:12px}
+.placeholder{
+  color:var(--gold-light);font-style:italic;font-size:.9rem;
+  border:1px dashed rgba(201,168,76,0.45);padding:14px 18px;margin-top:12px
+}
+
+/* ---------- cost comparison ---------- */
+.costgrid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:14px;margin-top:6px
+}
+.costcell{
+  background:rgba(5,5,8,0.45);border:1px solid var(--white-faint);
+  border-radius:var(--radius-card);padding:20px 22px
+}
+.costlabel{
+  display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--white-dim);margin-bottom:10px
+}
+.costcell b{
+  display:block;font-family:var(--font-display);font-size:2.1rem;
+  font-weight:300;line-height:1
+}
+.costwas{color:var(--white-dim);text-decoration:line-through;text-decoration-thickness:1px}
+.costnow{color:var(--gold)}
+.costsub{
+  display:block;margin-top:8px;font-size:.76rem;color:var(--white-dim)
+}
+
+/* ---------- screenshot shotlist ---------- */
+.shotlist{
+  margin-top:16px;border:1px solid var(--white-faint);
+  padding:26px 30px;background:rgba(8,13,26,0.5);
+  border-radius:var(--radius-card)
+}
+.shotlist h3{margin-bottom:18px}
+.shotlist ol{margin-left:20px;color:var(--white-dim);font-size:.9rem}
+.shotlist li{margin-bottom:11px}
+.shotlist li b{color:var(--white);font-weight:400}
+.shotlist .spec{
+  margin-top:16px;font-size:.78rem;color:var(--white-dim);
+  padding-top:14px;border-top:1px solid var(--white-faint)
+}
+
+/* ---------- cta ---------- */
+.cta{padding:120px 0;text-align:center;position:relative;overflow:hidden}
+.cta::after{
+  content:'';position:absolute;bottom:-40%;left:50%;transform:translateX(-50%);
+  width:70vw;height:70vw;
+  background:radial-gradient(circle,var(--gold-dim) 0%,transparent 60%);
+  pointer-events:none
+}
+.cta h2{
+  font-family:var(--font-display);font-weight:300;
+  font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.15;
+  max-width:19ch;margin:0 auto
+}
+.cta h2 em{font-style:italic;color:var(--gold)}
+.cta p{color:var(--white-dim);margin:26px auto 40px;max-width:52ch}
+/* Brand guide 04: primary — gold filled pill (one per section max) */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 30px;background:var(--gold);color:var(--black);
+  font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:.05em;
+  border-radius:var(--radius-pill);border:none;
+  transition:background .3s,box-shadow .3s
+}
+.btn:hover{background:var(--gold-light);box-shadow:0 0 24px rgba(201,168,76,0.35)}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--white-faint);padding:52px 0;font-size:.82rem;color:var(--white-dim)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="/" class="brand">Real <span class="g">P</span>lannet<small>Architects of Simplified Digital Solutions</small></a>
+    <div class="nav-links">
+      <a href="/#solutions">Solutions</a>
+      <a href="/work.html" class="active">Our Work</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Our Work · Live Builds</p>
+    <h1>Four sites.<br>Two countries.<br>Built once, <em>running always.</em></h1>
+    <p class="lede">Real Plannet builds Digital Presence for businesses that are excellent at what they do and invisible online. Rope access at height in Dubai. Auto parts shipping to Lagos. A twenty-year FM career that lived only on a CV. Below is what we built for each, and why each one is different.</p>
+
+    <div class="stats">
+      <div class="stat"><b>4</b><span>Live Sites</span></div>
+      <div class="stat"><b>2</b><span>Countries</span></div>
+      <div class="stat"><b>89.8%</b><span>Hosting Cost Cut</span></div>
+      <div class="stat"><b>₹0</b><span>CRM Subscription</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ CASE 01 ============================ -->
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="case-num">01</span>
+      <h2>Sky Rope Technical Services LLC — UAE</h2>
+    </div>
+    <div class="case-meta">
+      <span class="tag">Rope Access &amp; Facade Maintenance</span>
+      <span class="tag">Dubai, UAE</span>
+      <span class="tag">Digital Presence</span>
+      <span class="tag">EN / AR</span>
+    </div>
+
+    <div class="grid">
+      <div>
+        <div class="block">
+          <h3>The Client</h3>
+          <p>Sky Rope Technical Services LLC is an IRATA-certified rope access and facade maintenance contractor headquartered in Dubai Investment Park, operating across all seven emirates. Facade cleaning, cladding, glass replacement, aircraft warning lights, bird spikes, civil works — twelve distinct services delivered at height.</p>
+          <p>Their client list already included <strong>Ejadah, Emrill, Imdaad, Deyaar, DAMAC, Meydan, Hilton and Aster Clinic</strong>. The credibility was real. The problem was that none of it existed anywhere a prospect could find it.</p>
+        </div>
+
+        <div class="block">
+          <h3>The Problem</h3>
+          <p><strong>Serious contractor, no findable proof.</strong> In UAE facilities management, work is won on referral and on a procurement officer's shortlist. When a facility manager at a tower in Business Bay gets a name, the first thing they do is search it. If nothing credible comes back — no IRATA evidence, no service list, no Dubai Municipality standing — the name quietly drops off the list.</p>
+          <p><strong>Enquiries were arriving as scattered WhatsApp messages</strong> with no scope, no building name, and no service specified. Every enquiry cost a round of back-and-forth before anyone could quote.</p>
+          <p><strong>Arabic-speaking clients had no route in.</strong> A meaningful share of owners' associations, government-linked properties and Awqaf-managed assets expect an Arabic-language option as a baseline signal of seriousness.</p>
+        </div>
+
+        <div class="block">
+          <h3>What We Built</h3>
+          <ul class="built">
+            <li><b>Single-page conversion site, bilingual EN/AR</b>Full Arabic toggle across every section — not a translated landing page, the whole site.</li>
+            <li><b>Twelve services mapped as individual entries</b>Each service given its own card and its own enquiry hook, so the site ranks and converts on specific search terms rather than one generic "rope access" page.</li>
+            <li><b>Structured enquiry form with a service dropdown</b>The twelve services became a required field. Every enquiry now arrives with name, company, phone, service and scope already attached.</li>
+            <li><b>Pre-filled WhatsApp enquiry flow</b>Floating WhatsApp button opens the thread with the message already written. For a trade business, WhatsApp is the real inbox — so we made it the primary conversion path, not an afterthought.</li>
+            <li><b>Trust architecture, above the fold and below</b>IRATA certification, Dubai Municipality standing, UAE Ministry of Human Resources compliance, safe work method statements, a 26-logo client wall, and a five-step "enquiry to sign-off" process.</li>
+            <li><b>Regional switcher: UAE ⇄ Qatar</b>Built in from day one so the Qatar entity could go live under the same brand without rebuilding either site.</li>
+            <li><b>SEO foundation</b>Canonical tags, meta description, keyword targeting on <em>rope access UAE</em> / <em>facade cleaning Dubai</em>, Open Graph and Twitter card markup so shared links render as a proper preview in WhatsApp and LinkedIn.</li>
+            <li><b>Domain and hosting rebuilt at a fraction of the cost</b>The site was migrated to infrastructure costing <strong>₹528 a year (~AED 20)</strong>, down from <strong>₹5,175 (~AED 199)</strong> — the same domain and hosting, 89.8% cheaper, every year, permanently.</li>
+            <li><b>Integrated CRM and branded email — no subscription fee</b>Enquiries land in a proper CRM instead of a personal inbox, with branded company email addresses included. No monthly licence, no per-seat charge, no renewal that creeps upward.</li>
+            <li><b>Delivery hardening</b>Including email-address obfuscation to keep the team's inbox off scraper lists.</li>
+          </ul>
+        </div>
+
+        <div class="results">
+          <h3>The Cost Line</h3>
+          <div class="costgrid">
+            <div class="costcell">
+              <span class="costlabel">Before · per year</span>
+              <b class="costwas">₹5,175</b>
+              <span class="costsub">~AED 199</span>
+            </div>
+            <div class="costcell">
+              <span class="costlabel">After · per year</span>
+              <b class="costnow">₹528</b>
+              <span class="costsub">~AED 20</span>
+            </div>
+            <div class="costcell">
+              <span class="costlabel">Reduction</span>
+              <b class="costnow">89.8%</b>
+              <span class="costsub">₹4,647 saved annually</span>
+            </div>
+          </div>
+          <p style="margin-top:18px">Domain and hosting only. CRM and branded email are included in the build at no recurring licence cost — so the running cost went down while the capability went up.</p>
+        </div>
+
+        <div class="results">
+          <h3>Results &amp; Impact</h3>
+          <p>Sky Rope UAE now presents a single, searchable, credential-first destination in two languages. Every enquiry arrives pre-qualified by service, with the building and scope attached before anyone picks up the phone — removing the two or three exchanges that used to precede every quote.</p>
+          <p>The site carries the credibility that already existed but was invisible: IRATA certification, Dubai Municipality standing, and a client wall spanning Ejadah, Emrill, Imdaad, DAMAC, Meydan and Hilton. A procurement officer doing due diligence now finds something they can put in front of a committee.</p>
+          <!-- METRICS: client approved publication 2026-08. Hard numbers still outstanding.
+               Ask Sky Rope for: monthly enquiries pre-site vs post-site, WhatsApp vs form
+               split, and any won contract attributable to the site. Add a stat strip here
+               when they land — do not estimate. -->
+
+        </div>
+
+        <div class="shotlist">
+          <h3>Screenshot Shotlist</h3>
+          <ol>
+            <li><b>Hero</b> — "Access The Inaccessible" headline with the IRATA · UAE Based · Safety First badge visible. Capture with the top bar showing the UAE/Qatar region switcher.</li>
+            <li><b>Services grid</b> — scroll to show at least 6 of the 12 service cards in one frame; this is the SEO and conversion workhorse.</li>
+            <li><b>Contact form</b> — with the service dropdown open, so the twelve-option list is visible. This is the single best visual proof of the qualification logic.</li>
+            <li><b>WhatsApp flow</b> — mobile capture, floating button plus the opened thread with the pre-filled message. Best told as a two-frame before/after.</li>
+            <li><b>Client logo wall</b> — full-width frame catching Ejadah, Emrill, Imdaad, DAMAC.</li>
+            <li><b>Arabic view</b> — same hero with AR toggled, right-to-left. Strong differentiator; most competitor sites do not have this.</li>
+          </ol>
+          <p class="spec">Capture spec: 1440×900 desktop and 390×844 mobile, browser chrome cropped, 2× retina. Save to <code>/assets/work/skyrope-uae/</code>.</p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="panel">
+          <h4>Project Snapshot</h4>
+          <div class="kv"><span>Client</span><b>Sky Rope Technical Services LLC</b></div>
+          <div class="kv"><span>Industry</span><b>Rope Access &amp; Facade Maintenance</b></div>
+          <div class="kv"><span>Market</span><b>UAE — all seven emirates</b></div>
+          <div class="kv"><span>Base</span><b>Dubai Investment Park 1</b></div>
+          <div class="kv"><span>Service</span><b>Digital Presence</b></div>
+          <div class="kv"><span>Languages</span><b>English / Arabic</b></div>
+          <div class="kv"><span>Services mapped</span><b>12</b></div>
+          <div class="kv"><span>Primary conversion</span><b>WhatsApp + qualified form</b></div>
+          <div class="kv"><span>Status</span><b>Live</b></div>
+          <a class="visit" href="https://skyropetechnical.com" target="_blank" rel="noopener">Visit the site →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CASE 02 ============================ -->
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="case-num">02</span>
+      <h2>Sky Rope Services — Qatar</h2>
+    </div>
+    <div class="case-meta">
+      <span class="tag">Rope Access &amp; Facade Maintenance</span>
+      <span class="tag">Doha, Qatar</span>
+      <span class="tag">Market Entry</span>
+      <span class="tag">EN / AR</span>
+    </div>
+
+    <div class="grid">
+      <div>
+        <div class="block">
+          <h3>The Client</h3>
+          <p>Sky Rope for Building Exterior Cleaning (CR No. 246265) is the Qatar entity of the same group, based in Doha and serving Lusail, Al Rayyan, Al Wakrah, Al Khor, Mesaieed, Ras Laffan and Dukhan.</p>
+        </div>
+
+        <div class="block">
+          <h3>The Problem</h3>
+          <p><strong>A brand-new legal entity with zero market history.</strong> In the UAE, Sky Rope had five years of work and a client wall to point at. In Qatar it had a CR number and an empty search result. Entering a market where FM procurement is relationship-led without a credible digital footprint means starting every conversation from zero.</p>
+          <p><strong>Copying the UAE site would have been the wrong answer.</strong> Qatar runs a different compliance regime — QCS 2014, and a Civil Defence framework for buildings at or above 28 metres. It runs a different working week (Sun–Thu, not Mon–Sat). And it has a demand stream the UAE site never needed to address: <strong>IRATA-certified manpower supply for oil and gas shutdowns</strong> at Ras Laffan, Mesaieed and Dukhan — a materially different buyer with a materially different search intent.</p>
+        </div>
+
+        <div class="block">
+          <h3>What We Built</h3>
+          <ul class="built">
+            <li><b>A sister site, not a clone</b>Same brand spine, same "Access The Inaccessible" positioning — rebuilt around Qatari regulation, geography and buyer set.</li>
+            <li><b>Compliance framed as the headline credential</b>QCS 2014 alignment and the Qatar Civil Defence ≥28m framework given equal billing to IRATA, because in Qatar that is the first question procurement asks.</li>
+            <li><b>Oil &amp; gas manpower supply added as a twelfth service</b>The single highest-value differentiator in the Qatari market, and absent from the UAE site by design.</li>
+            <li><b>Positioning rewritten around vendor consolidation</b>"One accountable vendor for every job at height" — aimed squarely at facility managers juggling separate contractors per trade above ground level.</li>
+            <li><b>Localised operating reality</b>Sun–Thu 07:00–18:00 hours, Qatar numbering, <em>sales@skyrope.qa</em>, CR number displayed in the footer, and eight named coverage zones for local search.</li>
+            <li><b>Google Tag Manager container installed</b>Container <code>GTM-KPMHZWCH</code> live from launch, so enquiry behaviour is measurable from day one rather than reconstructed later.</li>
+            <li><b>Same conversion spine</b>Bilingual EN/AR, twelve-option service dropdown, pre-filled WhatsApp flow on +974 5586 4070.</li>
+            <li><b>Integrated CRM and branded email — no subscription fee</b>The Qatar entity launched with the same enquiry infrastructure as the UAE operation: enquiries routed into a proper CRM rather than a personal inbox, with branded company email included. No monthly licence, no per-seat cost. For a new entity with no systems yet, that meant day-one enquiry handling without a software budget.</li>
+            <li><b>SEO built for a cold domain</b>Targeting <em>rope access Qatar</em>, <em>IRATA manpower supply Qatar</em>, <em>oil and gas rope access Qatar</em> — deliberately including the lower-volume, higher-intent industrial terms a generic facade page would never reach.</li>
+          </ul>
+        </div>
+
+        <div class="results">
+          <h3>Results &amp; Impact</h3>
+          <p>Sky Rope entered Qatar with a compliant, bilingual, measurable digital presence live on day one — including a service line the UAE operation does not sell, aimed at a buyer the UAE site was never built to reach.</p>
+          <p>Google Tag Manager was installed at launch rather than retrofitted, so enquiry behaviour has been measurable from the first visitor instead of reconstructed six months later.</p>
+          <!-- METRICS: GTM container GTM-KPMHZWCH is live — real enquiry and conversion
+               counts exist. Pull them and add a stat strip. Do not estimate. -->
+
+        </div>
+
+        <div class="shotlist">
+          <h3>Screenshot Shotlist</h3>
+          <ol>
+            <li><b>Hero</b> — "Access The Inaccessible" with the Qatar badge and the four-stat strip (12 services · IRATA L1–3 · 0 incidents · Qatar-Wide).</li>
+            <li><b>Safety / compliance block</b> — the QCS 2014 and Civil Defence ≥28m cards in one frame. This is the case study's whole argument in a single image.</li>
+            <li><b>Services grid</b> — framed to include the <em>Manpower Supply — Oil &amp; Gas</em> card. Non-negotiable; it is the UAE/Qatar differentiator.</li>
+            <li><b>Coverage map</b> — the eight-zone chip row (Doha, Lusail, Al Rayyan, Al Wakrah, Al Khor, Mesaieed, Ras Laffan, Dukhan).</li>
+            <li><b>Contact form</b> — dropdown open, Qatar number and CR No. 246265 visible.</li>
+            <li><b>Side-by-side</b> — UAE hero and Qatar hero in one composite. Best single asset for LinkedIn and directory portfolios.</li>
+          </ol>
+          <p class="spec">Capture spec: 1440×900 desktop and 390×844 mobile, browser chrome cropped, 2× retina. Save to <code>/assets/work/skyrope-qatar/</code>.</p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="panel">
+          <h4>Project Snapshot</h4>
+          <div class="kv"><span>Client</span><b>Sky Rope for Building Exterior Cleaning</b></div>
+          <div class="kv"><span>CR Number</span><b>246265</b></div>
+          <div class="kv"><span>Industry</span><b>Rope Access &amp; Facade Maintenance</b></div>
+          <div class="kv"><span>Market</span><b>Qatar — nationwide</b></div>
+          <div class="kv"><span>Base</span><b>Zone 35, Doha</b></div>
+          <div class="kv"><span>Service</span><b>Digital Presence · Market Entry</b></div>
+          <div class="kv"><span>Languages</span><b>English / Arabic</b></div>
+          <div class="kv"><span>Services mapped</span><b>12 (incl. O&amp;G manpower)</b></div>
+          <div class="kv"><span>Analytics</span><b>GTM live from launch</b></div>
+          <div class="kv"><span>Status</span><b>Live</b></div>
+          <a class="visit" href="https://skyrope.qa" target="_blank" rel="noopener">Visit the site →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CASE 03 ============================ -->
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="case-num">03</span>
+      <h2>Al Shola Auto Spare Parts LLC — Dubai</h2>
+    </div>
+    <div class="case-meta">
+      <span class="tag">Auto Parts Trading</span>
+      <span class="tag">Al Qusais, Dubai</span>
+      <span class="tag">Catalogue + Export</span>
+      <span class="tag">EN / AR</span>
+    </div>
+
+    <div class="grid">
+      <div>
+        <div class="block">
+          <h3>The Client</h3>
+          <p>Al Shola Auto Spare Parts LLC is a Dubai Government licensed parts trader (Lic. No. 1560955) on Damascus Street, Al Qusais Industrial First. Genuine, OEM and aftermarket parts for the six marques that dominate GCC roads — Toyota, Nissan, Mitsubishi, Honda, Hyundai and Kia — sourced from certified suppliers across seven countries.</p>
+          <p>Three distinct customer types, one counter: individual car owners, Dubai workshops and fleet operators, and <strong>importers running container loads into Mombasa, Lagos, Dar es Salaam and Khartoum</strong>.</p>
+        </div>
+
+        <div class="block">
+          <h3>The Problem</h3>
+          <p><strong>A parts business is a search business.</strong> Nobody browses for a shock absorber. They search for the exact part, for an exact vehicle, and buy from whoever answers first and correctly. Al Shola had the stock, the licence and the sourcing network — and no presence at the moment of search.</p>
+          <p><strong>The costly failure in this trade isn't a lost sale, it's the wrong part.</strong> A mis-ordered component means a return, a workshop bay sitting idle, and a customer who doesn't come back. Al Shola's actual differentiator was VIN and chassis verification before payment — a process advantage that existed entirely in staff heads and nowhere a buyer could see it.</p>
+          <p><strong>Three audiences needing three different things.</strong> A walk-in owner wants one part today. A workshop wants trade pricing and a 10-minute stock check. An African importer wants FOB Jebel Ali pricing, HS-coded documentation and mixed-container consolidation. One generic "contact us" page serves none of them.</p>
+        </div>
+
+        <div class="block">
+          <h3>What We Built</h3>
+          <ul class="built">
+            <li><b>A filterable parts catalogue, not a services list</b>Fourteen categories from engine oils and filters through brake systems, suspension, electrical, body parts and safety equipment — browsable and searchable, with a per-part enquiry action rather than one form at the bottom of the page.</li>
+            <li><b>Per-part WhatsApp enquiry with brand pre-selection</b>The buyer picks the part, picks the vehicle brand, adds an optional note, and the WhatsApp thread opens pre-composed. The "10-minute stock check" promise is only credible if enquiring takes ten seconds.</li>
+            <li><b>VIN verification made the headline, not a footnote</b>The process advantage that was invisible became the central argument: <em>Not Just Parts — The Correct Part, First Time.</em></li>
+            <li><b>Three separate B2B tracks</b>Distinct propositions for workshops, African importers and fleet operators — trade pricing and same-day delivery; FOB Jebel Ali, HS-coded docs and bilingual commercial invoices; preferred-supplier agreements and consolidated monthly invoicing.</li>
+            <li><b>Export corridor made explicit</b>Named routes from Dubai to Mombasa, Lagos, Dar es Salaam and Khartoum. An importer in Lagos needs to see their own city before they believe the shipping claim.</li>
+            <li><b>Bilingual EN/AR with Arabic product terminology</b>Not just the interface — the part names.</li>
+            <li><b>AutoPartsStore schema with a full OfferCatalog</b>Structured data mapping the licence, address, opening hours and category tree, so Google and AI assistants can read the inventory as data rather than prose.</li>
+            <li><b>Safety and fleet consumables as a separate line</b>First aid boxes, hazard stickers, warning triangles, battery acid and water — the low-value, high-frequency reorder items that bring workshops back monthly.</li>
+          </ul>
+        </div>
+
+        <div class="results">
+          <h3>Results &amp; Impact</h3>
+          <p>Al Shola now has a searchable catalogue targeting part-level search intent, a one-tap enquiry path per part, and three separately-argued B2B propositions — with structured data that lets Google and AI assistants read the business as an auto parts store with a defined inventory.</p>
+          <!-- METRICS: ask Al Shola for WhatsApp enquiry volume pre/post launch and
+               the workshop vs individual vs export split. Do not estimate. -->
+        </div>
+
+        <div class="shotlist">
+          <h3>Screenshot Shotlist</h3>
+          <ol>
+            <li><b>Hero</b> — "Not Just Parts — The Correct Part, First Time" with the six brand marks and the four trust chips (OEM grades · VIN-Verified · Export-Ready · UAE Licensed).</li>
+            <li><b>Catalogue with filter active</b> — the strongest single frame. Show a category filtered down, with per-part enquiry buttons visible.</li>
+            <li><b>Part enquiry modal</b> — brand selector open. This is the qualification mechanism made visible.</li>
+            <li><b>Export corridor</b> — the Dubai → Mombasa / Lagos / Dar es Salaam route graphic. Unusual and memorable; strong for directory portfolios.</li>
+            <li><b>B2B tracks</b> — the four-audience block in one frame.</li>
+            <li><b>Arabic view</b> — catalogue in AR, right-to-left, with Arabic part terminology.</li>
+          </ol>
+          <p class="spec">Capture spec: 1440×900 desktop and 390×844 mobile, browser chrome cropped, 2× retina. Save to <code>/assets/work/alshola/</code>.</p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="panel">
+          <h4>Project Snapshot</h4>
+          <div class="kv"><span>Client</span><b>Al Shola Auto Spare Parts LLC</b></div>
+          <div class="kv"><span>Trade Licence</span><b>Dubai Govt. 1560955</b></div>
+          <div class="kv"><span>Industry</span><b>Auto Parts Trading &amp; Export</b></div>
+          <div class="kv"><span>Market</span><b>UAE + East/West Africa</b></div>
+          <div class="kv"><span>Base</span><b>Al Qusais Industrial First</b></div>
+          <div class="kv"><span>Vehicle brands</span><b>6</b></div>
+          <div class="kv"><span>Catalogue categories</span><b>14</b></div>
+          <div class="kv"><span>Sourcing countries</span><b>7</b></div>
+          <div class="kv"><span>Schema</span><b>AutoPartsStore + OfferCatalog</b></div>
+          <div class="kv"><span>Status</span><b>Live</b></div>
+          <a class="visit" href="https://alsholaauto.com" target="_blank" rel="noopener">Visit the site →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CASE 04 ============================ -->
+<section class="case">
+  <div class="wrap">
+    <div class="case-head">
+      <span class="case-num">04</span>
+      <h2>Executive Profile — Senior FM Specialist, Dubai</h2>
+    </div>
+    <div class="case-meta">
+      <span class="tag">Personal Brand</span>
+      <span class="tag">Dubai, UAE</span>
+      <span class="tag">Career Positioning</span>
+      <span class="tag">In-House Build</span>
+    </div>
+
+    <div class="grid">
+      <div>
+        <div class="block">
+          <h3>The Brief</h3>
+          <p><strong>Disclosure: this is our co-founder's own professional profile.</strong> We're including it because it demonstrates a distinct service line — executive personal branding — and because we built it under exactly the constraints a client would impose. Judge it on the work, knowing whose it is.</p>
+          <p>The subject: twenty years of facilities and community management across master communities, international airports, data centres and defence installations in the GCC and India — Wasl Communities, Dubai Airports, Fairmont Residence, DAMAC Park Towers, Canara Bank Data Centre, DRDO.</p>
+        </div>
+
+        <div class="block">
+          <h3>The Problem</h3>
+          <p><strong>Twenty years of career that existed only inside a PDF.</strong> A CV is a document you send after someone has already decided to consider you. It does nothing at the earlier moment — when a recruiter, a client or an executive search consultant types a name into Google and forms an impression in four seconds.</p>
+          <p><strong>Two audiences with opposite needs.</strong> A hiring manager screening for an FM Director role wants credentials, sector coverage and career trajectory. A prospective advisory client wants defined services with clear scope. Most personal sites pick one and lose the other.</p>
+          <p><strong>An unusual combination that reads as unfocused unless framed properly.</strong> Deep traditional FM plus Power Platform and automation capability is genuinely rare — but presented as a flat skills list it looks scattered rather than distinctive.</p>
+        </div>
+
+        <div class="block">
+          <h3>What We Built</h3>
+          <ul class="built">
+            <li><b>A dual-purpose site: profile and practice</b>Credentials, sector coverage and a career timeline for recruiters — alongside ten defined service lines with individual enquiry routes for advisory clients. One site, two journeys.</li>
+            <li><b>Career timeline as the structural spine</b>Six positions from 2005 to present, each tagged by sector (Community FM, Airport FM, Data Centre, Commercial FM). Twenty years becomes legible in about fifteen seconds.</li>
+            <li><b>Client and site logos surfaced as proof</b>Wasl, Dubai Airports, Fairmont, DAMAC, Canara Bank, Sigma Soft Tech Park, IBM Daksh, DRDO — named, because in FM recruitment the buildings you've run <em>are</em> the credential.</li>
+            <li><b>The rare combination framed as the positioning</b>"Turning data into information, information into knowledge, knowledge into wisdom" — traditional FM depth plus PowerApps, Power Automate and Power BI presented as one coherent proposition rather than two unrelated skill sets.</li>
+            <li><b>Certifications given structural weight</b>IOSH, ISO 9001 QMS Internal Auditor, M-100 Community Association Management, IMS — placed where a screener looks first, not buried.</li>
+            <li><b>Ten service lines with a routed enquiry form</b>Technical audit, CAFM implementation, ERP, regulatory compliance, contract and SLA structuring, staff training and more — each selectable, so every enquiry arrives with intent attached.</li>
+            <li><b>Person + Organization schema</b>Structured data so search engines and AI assistants can resolve the individual as a named entity with defined expertise — the same entity logic we apply to company sites.</li>
+            <li><b>Full SEO build</b>Canonical, `index, follow`, Open Graph and Twitter cards, Google Search Console verification, keyword targeting on <em>facilities manager Dubai</em>, <em>CAFM implementation</em>, <em>community manager Dubai</em>.</li>
+          </ul>
+        </div>
+
+        <div class="results">
+          <h3>Results &amp; Impact</h3>
+          <p>Twenty years of sector-spanning FM experience is now a searchable, structured, credential-first destination that works for a recruiter screening in four seconds and an advisory client scoping a project — with every enquiry routed by intent.</p>
+        </div>
+
+        <div class="shotlist">
+          <h3>Screenshot Shotlist</h3>
+          <ol>
+            <li><b>Hero</b> — name, dual positioning line, headshot, and the stat strip (years · sectors · services · certifications).</li>
+            <li><b>Client logo row</b> — Wasl, Dubai Airports, Fairmont, DAMAC, Canara Bank, DRDO in one frame.</li>
+            <li><b>Career timeline</b> — full 2005→present view. The clearest single argument on the page.</li>
+            <li><b>Services grid</b> — at least 6 of the 10 service cards.</li>
+            <li><b>Enquiry form</b> — interest dropdown open, showing the ten routed options.</li>
+          </ol>
+          <p class="spec">Capture spec: 1440×900 desktop and 390×844 mobile, browser chrome cropped, 2× retina. Save to <code>/assets/work/executive-profile/</code>.</p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="panel">
+          <h4>Project Snapshot</h4>
+          <div class="kv"><span>Type</span><b>Personal brand / executive profile</b></div>
+          <div class="kv"><span>Sector</span><b>Facilities Management</b></div>
+          <div class="kv"><span>Market</span><b>UAE / GCC</b></div>
+          <div class="kv"><span>Service lines mapped</span><b>10</b></div>
+          <div class="kv"><span>Career span presented</span><b>20+ years, 6 roles</b></div>
+          <div class="kv"><span>Schema</span><b>Person + Organization</b></div>
+          <div class="kv"><span>Relationship</span><b>In-house (co-founder)</b></div>
+          <div class="kv"><span>Status</span><b>Live</b></div>
+          <a class="visit" href="https://raneesh.net" target="_blank" rel="noopener">Visit the site →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ WHAT WE DO ============================ -->
+<section class="case" style="border-bottom:0">
+  <div class="wrap">
+    <p class="eyebrow">The Service Behind Both Builds</p>
+    <h2 style="font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:22ch;line-height:1.15">Digital Presence. Built once, runs always.</h2>
+    <div class="grid" style="margin-top:44px">
+      <div>
+        <ul class="built">
+          <li><b>Website design &amp; build</b>Conversion-first, mobile-first, bilingual where the market demands it.</li>
+          <li><b>SEO setup</b>Schema, sitemap, canonical tags, Google Search Console, intent-mapped keyword targeting.</li>
+          <li><b>Analytics integration</b>Google Analytics / Tag Manager, configured to measure enquiries — not just pageviews.</li>
+          <li><b>WhatsApp enquiry flow</b>Pre-filled, one-tap, treated as the primary conversion path for trade and field businesses.</li>
+          <li><b>Domain &amp; hosting configuration</b>DNS, SSL, email routing, delivery performance — on infrastructure that costs a fraction of typical agency hosting. On the Sky Rope UAE build it came to ₹528 a year, down from ₹5,175.</li>
+          <li><b>Integrated CRM &amp; branded email</b>Included in the build with no subscription fee. Enquiries land somewhere they can be worked, not in a personal inbox.</li>
+          <li><b>Full O&amp;M documentation</b>You own the build. Everything needed to run or hand it over is written down.</li>
+        </ul>
+      </div>
+      <aside>
+        <div class="panel">
+          <h4>Why it works for trade businesses</h4>
+          <p style="color:var(--white-dim);font-size:.92rem">Contractors do not lose work because their website is ugly. They lose it because a procurement officer searched their name, found nothing that proved competence, and moved to the next vendor on the list.</p>
+          <p style="color:var(--white-dim);font-size:.92rem;margin-top:14px">We build the thing that answers that search — and we route the enquiry to where the client actually replies.</p>
+          <a class="visit" href="/#contact">Start a project →</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Your business, <em>online</em> — properly.</h2>
+    <p>If your work is better than your search results, that is a solvable problem. Tell us what you do and where you operate.</p>
+    <a class="btn" href="/#contact">Get in touch</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Real Plannet · Registered MSME · UDYAM-KR-03-0705408</span>
+    <span><a href="mailto:hello@realplannet.com">hello@realplannet.com</a> · <a href="/">realplannet.com</a></span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"CollectionPage",
+  "name":"Our Work — Real Plannet",
+  "url":"https://realplannet.com/work.html",
+  "description":"Real Plannet Digital Presence case studies for Sky Rope Technical Services (UAE) and Sky Rope Services (Qatar).",
+  "publisher":{
+    "@type":"Organization",
+    "name":"Real Plannet",
+    "url":"https://realplannet.com",
+    "email":"hello@realplannet.com",
+    "address":{"@type":"PostalAddress","addressCountry":"IN"}
+  },
+  "hasPart":[
+    {
+      "@type":"CreativeWork",
+      "name":"Sky Rope Technical Services LLC — UAE Digital Presence",
+      "about":"Bilingual conversion website, SEO setup, WhatsApp enquiry flow, integrated CRM and branded email, and hosting migration for an IRATA-certified rope access contractor in Dubai. Annual domain and hosting cost reduced from 5,175 INR to 528 INR, an 89.8% reduction, with no CRM subscription fee.",
+      "url":"https://skyropetechnical.com"
+    },
+    {
+      "@type":"CreativeWork",
+      "name":"Sky Rope Services Qatar — Market Entry Digital Presence",
+      "about":"Qatar market-entry website with QCS 2014 and Civil Defence compliance positioning, oil and gas manpower supply service line, GTM analytics and bilingual WhatsApp enquiry flow.",
+      "url":"https://skyrope.qa"
+    },
+    {
+      "@type":"CreativeWork",
+      "name":"Al Shola Auto Spare Parts LLC — Catalogue and Export Digital Presence",
+      "about":"Bilingual filterable auto parts catalogue across 14 categories and 6 vehicle brands, with per-part WhatsApp enquiry, three B2B tracks for workshops, fleet operators and African importers, and AutoPartsStore structured data.",
+      "url":"https://alsholaauto.com"
+    },
+    {
+      "@type":"CreativeWork",
+      "name":"Executive Profile — Senior Facilities Management Specialist, Dubai",
+      "about":"Personal brand and executive profile site presenting 20 years of GCC facilities and community management, with a career timeline, ten routed advisory service lines, and Person plus Organization structured data.",
+      "url":"https://raneesh.net"
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
