@@ -202,8 +202,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   html { scroll-behavior: smooth; }
 
+  html { background: var(--black); }
+
   body {
-    background: var(--black);
+    background: transparent;
     color: var(--white);
     font-family: var(--font-body);
     font-weight: 300;
@@ -820,9 +822,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-top { flex-direction: column; gap: 40px; }
     .footer-links { grid-template-columns: repeat(2, 1fr); }
   }
+  /* ── SPACE FIELD (decorative only — sits behind all content) ── */
+  .rp-space{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:radial-gradient(ellipse 130% 90% at 50% 0%,#0d1019 0%,#07070c 48%,#050508 100%)}
+  .rp-stars{position:absolute;inset:-8% 0;will-change:transform}
+  .rp-stars i{position:absolute;background:#fff;border-radius:50%;animation:rpTw 7s ease-in-out infinite}
+  @keyframes rpTw{0%,100%{opacity:var(--o)}50%{opacity:calc(var(--o)*.22)}}
+  .rp-neb{position:absolute;inset:0;background:radial-gradient(circle at 20% 22%,rgba(201,168,76,.07),transparent 42%),radial-gradient(circle at 82% 68%,rgba(40,70,140,.10),transparent 46%);filter:blur(24px)}
+  .rp-moon{position:absolute;right:11vw;top:15vh;width:7px;height:7px;border-radius:50%;background:var(--gold-light);box-shadow:0 0 16px 3px rgba(232,201,122,.45);opacity:.85;animation:rpDrift 30s ease-in-out infinite}
+  @keyframes rpDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,14px)}}
+  .rp-rings{position:absolute;left:50%;top:46%;translate:-50% -50%;pointer-events:none;animation:rpFade 2.4s cubic-bezier(.16,1,.3,1) .3s both}
+  .rp-spin{animation:rpSpin 90s linear infinite}
+  @keyframes rpSpin{to{rotate:360deg}}
+  @keyframes rpFade{from{opacity:0;scale:.9}to{opacity:1;scale:1}}
+  .rp-ring{position:absolute;left:50%;top:50%;border:1px solid rgba(201,168,76,.12);border-radius:50%;translate:-50% -50%}
+  .rp-r1{width:min(1180px,138vw);height:min(360px,42vw);rotate:-17deg}
+  .rp-r2{width:min(880px,104vw);height:min(230px,28vw);rotate:9deg;border-color:rgba(201,168,76,.085)}
+  .rp-r3{width:min(1560px,178vw);height:min(520px,60vw);rotate:-28deg;border-color:rgba(245,244,240,.04)}
+  .rp-limb{position:absolute;left:50%;bottom:calc(16vh - 300vw);width:300vw;height:300vw;translate:-50% 0;border-radius:50%;background:radial-gradient(circle at 50% 6%,#0e0d0f 0%,#0a0a0f 34%,#060609 62%);box-shadow:0 0 90px 26px rgba(201,168,76,.06);animation:rpRise 2.6s cubic-bezier(.16,1,.3,1) .2s both;pointer-events:none}
+  @keyframes rpRise{from{opacity:0;translate:-50% 30px}to{opacity:1;translate:-50% 0}}
+  @media (prefers-reduced-motion: reduce){.rp-stars i,.rp-moon,.rp-spin{animation:none}}
+  @media (max-width:760px){
+    .rp-neb{filter:blur(14px);background:radial-gradient(circle at 24% 20%,rgba(201,168,76,.06),transparent 44%),radial-gradient(circle at 84% 70%,rgba(40,70,140,.09),transparent 48%)}
+    .rp-moon{right:9vw;top:12vh}
+    .rp-rings{top:44%}
+    .rp-r1{width:150vw;height:56vw}
+    .rp-r2{width:112vw;height:38vw}
+    .rp-r3{width:190vw;height:76vw}
+    .rp-limb{bottom:calc(11vh - 300vw)}
+  }
 </style>
 </head>
 <body>
+<div class="rp-space" aria-hidden="true"><div class="rp-neb"></div><div class="rp-stars" id="rpStars"></div><div class="rp-moon"></div></div>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5S9GM2N"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -870,6 +901,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
   <div class="hero-grid"></div>
+  <div class="rp-rings" aria-hidden="true"><div class="rp-spin"><div class="rp-ring rp-r1"></div></div><div class="rp-spin" style="animation-duration:140s;animation-direction:reverse"><div class="rp-ring rp-r2"></div></div><div class="rp-spin" style="animation-duration:210s"><div class="rp-ring rp-r3"></div></div></div>
+  <div class="rp-limb" aria-hidden="true"></div>
 
   <p class="hero-eyebrow reveal" data-i18n="hero_eyebrow">Real Plannet · Registered MSME · India</p>
 
@@ -1514,6 +1547,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       msg.textContent = 'Error: ' + err.message;
     }
   }
+</script>
+<script>
+/* Space field: starfield + gentle scroll parallax (decorative) */
+(function(){
+  var host=document.getElementById('rpStars');if(!host)return;
+  var N=window.innerWidth<700?70:140;
+  var h='';for(var i=0;i<N;i++){var s=Math.random()<.86?1:2,o=(.16+Math.random()*.5).toFixed(2);
+    h+='<i style="left:'+(Math.random()*100).toFixed(2)+'%;top:'+(Math.random()*100).toFixed(2)+'%;width:'+s+'px;height:'+s+'px;--o:'+o+';opacity:'+o+';animation-delay:-'+(Math.random()*7).toFixed(1)+'s"></i>';}
+  host.innerHTML=h;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var t=0;window.addEventListener('scroll',function(){if(t)return;t=requestAnimationFrame(function(){t=0;host.style.transform='translateY('+(-window.scrollY*0.05).toFixed(1)+'px)';});},{passive:true});
+})();
 </script>
 </body>
 </html>
