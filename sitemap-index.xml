@@ -9,34 +9,37 @@
 
   Verify any change with:
     for d in realplannet.com career.realplannet.com check.realplannet.com \
-             makemycv.realplannet.com sanad.realplannet.com; do
+             makemycv.realplannet.com sanad.realplannet.com web.realplannet.com; do
       curl -s -o /dev/null -w "$d %{http_code} %{content_type}\n" \
         -L https://$d/sitemap.xml
     done
 
-  CURRENTLY EXCLUDED — add back the moment each one returns real XML:
-    web.realplannet.com/sitemap.xml     404 as of 2026-09-01
-    wealth.realplannet.com/sitemap.xml  removed from public presence
+  CURRENTLY EXCLUDED:
+    wealth.realplannet.com/sitemap.xml  removed from public presence 2026-09
 -->
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://realplannet.com/sitemap.xml</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://career.realplannet.com/sitemap.xml</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://check.realplannet.com/sitemap.xml</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://makemycv.realplannet.com/sitemap.xml</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-02</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://sanad.realplannet.com/sitemap.xml</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-09-02</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://web.realplannet.com/sitemap.xml</loc>
+    <lastmod>2026-09-02</lastmod>
   </sitemap>
 </sitemapindex>
